@@ -1,7 +1,20 @@
 /**
- * Fuzzy Petal Shop - Custom Tactile & Chenille Design Tokens
- * Incorporates Anthropics Frontend Design Guidelines: Rich typography, accessible contrast, sticker micro-interactions.
+ * Artistically. (formerly Fuzzy Petal Shop) - Custom Tactile & Chenille Design Tokens
+ * Incorporates Anthropics Frontend Design Guidelines:
+ * - Rich editorial typography featuring "Avillia" display serif inspired by fine art botanicals
+ * - Subtle visual hierarchy with designated salesperson avatar & card accents calibrated 5% lighter than base tokens
+ * - Accessible contrast and sticker micro-interactions
  */
+
+@import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,500;0,6..96,700;0,6..96,800;0,6..96,900;1,6..96,600;1,6..96,700;1,6..96,900&family=Playfair+Display:ital,wght@0,600;0,700;0,800;0,900;1,600;1,700;1,800&display=swap');
+
+@font-face {
+  font-family: 'Avillia';
+  src: local('Avillia'), local('Avillia-Regular'), url('https://fonts.cdnfonts.com/s/95252/Avillia.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
 
 :root {
   --bg: #e9f4fc;           /* Crisp sky ground */
@@ -10,12 +23,17 @@
   --ink: #2a1f33;          /* Deep plum black */
   --muted: #675c71;
   --line: #2a1f33;
-  --accent: #f7cf2a;       /* Warm sunflower yellow */
+  --accent: #f7cf2a;       /* Warm sunflower yellow base token */
+  /* Salesperson avatar/card accent explicitly calibrated 5% lighter than base token for subtle visual hierarchy */
+  --salesperson-accent: #fbe05c; 
+  --salesperson-card: #fffdf2;
+  --salesperson-apron: #fbd668;
   --accent-ink: #2a1f33;
   --pink: #f8b9cb;
   --blue: #8fcbf2;
   --danger: #c62f3d;
   --ok: #1f7f43;
+  --brand-font: 'Avillia', 'Playfair Display', 'Bodoni Moda', Didot, Georgia, serif;
   --display: 'Baloo 2', 'Baloo Da 2', 'Trebuchet MS', system-ui, sans-serif;
   --body: 'Nunito', system-ui, -apple-system, 'Segoe UI', sans-serif;
   --gl: max(16px, env(safe-area-inset-left, 0px));
@@ -30,6 +48,9 @@
     --ink: #f8f1e7;
     --muted: #bbaec8;
     --line: #f8f1e7;
+    --salesperson-accent: #ffe87a;
+    --salesperson-card: #383049;
+    --salesperson-apron: #ffd95c;
     --danger: #ff7683;
     --ok: #5bd187;
     color-scheme: dark;
@@ -43,6 +64,9 @@
   --ink: #f8f1e7;
   --muted: #bbaec8;
   --line: #f8f1e7;
+  --salesperson-accent: #ffe87a;
+  --salesperson-card: #383049;
+  --salesperson-apron: #ffd95c;
   --danger: #ff7683;
   --ok: #5bd187;
   color-scheme: dark;
@@ -72,6 +96,27 @@ h1, h2, h3, h4 {
   line-height: 1.15;
   margin: 0;
   text-wrap: balance;
+}
+
+/* "Avillia" Editorial Font Styling */
+.font-artistic {
+  font-family: var(--brand-font);
+  font-weight: 700;
+  letter-spacing: -0.018em;
+  font-feature-settings: "swsh" 1, "dlig" 1;
+}
+
+/* Salesperson Avatar Card - Intentional Visual Hierarchy (5% lighter accent) */
+.salesperson-card {
+  background: var(--salesperson-card);
+  border-color: var(--line);
+  box-shadow: 0 4px 0 var(--line);
+}
+
+.salesperson-pill {
+  background: var(--salesperson-accent);
+  color: var(--ink);
+  border: 1.5px solid var(--line);
 }
 
 button, input, select, textarea {
@@ -1010,3 +1055,4 @@ h2.title {
   text-align: center;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
+

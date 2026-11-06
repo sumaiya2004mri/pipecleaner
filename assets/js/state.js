@@ -228,6 +228,18 @@ class StateStore {
     this.notify('flower');
     return true;
   }
+
+  /**
+   * Automated Canvas Capture Utility
+   * Programmatically renders and returns an image snapshot of the custom workbench layout.
+   */
+  async captureSnapshot(options = {}) {
+    const { exportCurrentWorkbenchSnapshot } = await import('./renderer.js');
+    const cost = this.calculateCost();
+    const snapshot = await exportCurrentWorkbenchSnapshot(this.flower, cost, options);
+    return snapshot;
+  }
 }
 
 export const store = new StateStore();
+

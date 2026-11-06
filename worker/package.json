@@ -1,0 +1,20 @@
+{
+  "name": "artistically-instagram-worker",
+  "version": "1.0.0",
+  "description": "Nightly 8:00 PM automated Instagram publisher and asset compiler for Artistically.",
+  "main": "scheduler.js",
+  "type": "module",
+  "scripts": {
+    "start": "node scheduler.js",
+    "publish:now": "node scheduler.js --run-now"
+  },
+  "keywords": [
+    "instagram",
+    "automation",
+    "artistically",
+    "pipe-cleaner",
+    "cron"
+  ],
+  "author": "Artistically. Studio",
+  "license": "MIT"
+}

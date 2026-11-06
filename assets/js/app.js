@@ -642,13 +642,13 @@ class AppController {
     const s = store.flower;
     const spec = FL[s.flower] || FL.sunflower;
     const cost = store.calculateCost();
-    const orderId = 'FP' + Date.now().toString(36).slice(-4).toUpperCase();
+    const orderId = 'ART' + Date.now().toString(36).slice(-4).toUpperCase();
     const details = store.checkout;
 
     const materialsSummary = cost.lines.map(l => `${l.n} ${l.col}`).join(', ');
     const shareableUrl = `${window.location.origin}${window.location.pathname}${store.getShareableHash()}`;
 
-    return `🌸 *Fuzzy Petal Shop Order #${orderId}*
+    return `🌸 *Artistically. Custom Order #${orderId}*
 ------------------------------
 Flower: ${spec.name} (${s.petals} Petals, ${s.leaves} Leaves)
 Pipe Cleaners: ${materialsSummary}
@@ -808,7 +808,13 @@ ${shareableUrl}`;
   }
 }
 
+// Expose store globally for programmatic canvas capture & testing
+if (typeof window !== 'undefined') {
+  window.ArtisticallyStore = store;
+}
+
 // Instantiate on DOM ready
 document.addEventListener('DOMContentLoaded', () => {
   new AppController();
 });
+

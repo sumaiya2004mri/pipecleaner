@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <meta name="description" content="Fuzzy Petal Shop - Custom handcrafted pipe cleaner flower workbench and kits in Rajshahi. Customize petals, colors, coils, and order via Instagram or Email.">
+  <meta name="description" content="Artistically. - Custom handcrafted pipe cleaner flower workbench and kits in Rajshahi. Customize petals, colors, coils, and order via Instagram or Email.">
   <meta name="theme-color" content="#f7cf2a">
-  <title>Fuzzy Petal Shop · Handcrafted Pipe Cleaner Blooms</title>
+  <title>Artistically. · Handcrafted Pipe Cleaner Blooms</title>
 
-  <!-- Google Fonts: Baloo 2, Baloo Da 2 (Bengali), Nunito -->
+  <!-- Google Fonts: Avillia-inspired Editorial Display (Bodoni Moda & Playfair Display), Baloo 2, Baloo Da 2, Nunito -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&family=Baloo+Da+2:wght@600;700&family=Nunito:wght@500;600;700;800;900&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,500;0,6..96,700;0,6..96,800;0,6..96,900;1,6..96,600;1,6..96,700&family=Playfair+Display:ital,wght@0,600;0,700;0,800;0,900;1,600;1,700&family=Baloo+2:wght@500;700;800&family=Baloo+Da+2:wght@600;700&family=Nunito:wght@500;600;700;800;900&display=swap">
 
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -27,10 +27,12 @@
             line: 'var(--line)',
             accent: 'var(--accent)',
             'accent-ink': 'var(--accent-ink)',
+            'salesperson-accent': 'var(--salesperson-accent)',
             danger: 'var(--danger)',
             ok: 'var(--ok)'
           },
           fontFamily: {
+            artistic: ['"Avillia"', '"Playfair Display"', '"Bodoni Moda"', 'Didot', 'serif'],
             display: ['"Baloo 2"', '"Baloo Da 2"', 'sans-serif'],
             body: ['Nunito', 'sans-serif']
           }
@@ -91,9 +93,9 @@
 
             <!-- Boutique Hanging Wooden Sign -->
             <path d="M110 142V172M250 142V172" stroke="#5c3d1f" stroke-width="3"/>
-            <rect x="58" y="170" width="244" height="72" rx="14" fill="#8a5a3c" stroke="#2a1f33" stroke-width="3"/>
-            <text x="180" y="208" text-anchor="middle" font-family="'Baloo 2', sans-serif" font-weight="800" font-size="32" fill="#fff4d6">Fuzzy Petal</text>
-            <text x="180" y="230" text-anchor="middle" font-family="'Baloo Da 2', 'Baloo 2', sans-serif" font-weight="700" font-size="14" fill="#f7cf2a">স্বাগতম · pipe cleaner flowers</text>
+            <rect x="50" y="166" width="260" height="76" rx="14" fill="#8a5a3c" stroke="#2a1f33" stroke-width="3"/>
+            <text x="180" y="209" text-anchor="middle" font-family="'Avillia', 'Playfair Display', 'Bodoni Moda', Georgia, serif" font-weight="700" font-size="35" fill="#fff4d6" letter-spacing="-0.5">Artistically.</text>
+            <text x="180" y="231" text-anchor="middle" font-family="'Baloo Da 2', 'Baloo 2', sans-serif" font-weight="700" font-size="13" fill="#fbe05c">স্বাগতম · pipe cleaner flowers</text>
 
             <!-- Striped Canvas Awning -->
             <g>
@@ -204,10 +206,12 @@
               <g id="jars"></g>
             </g>
 
-            <!-- Friendly Shopkeeper with waving arm -->
-            <g transform="translate(10,316)">
+            <!-- Friendly Shopkeeper / Salesperson Avatar (accent calibrated 5% lighter for intentional visual hierarchy) -->
+            <g transform="translate(10,316)" id="salespersonAvatar">
               <ellipse cx="78" cy="262" rx="70" ry="9" fill="#000000" opacity="0.14"/>
-              <path d="M34 124Q34 78 78 78Q122 78 122 124L134 258H22Z" fill="#f7cf2a" stroke="#2a1f33" stroke-width="3" stroke-linejoin="round"/>
+              <!-- Salesperson dress in 5% lighter accent #fbe05c -->
+              <path d="M34 124Q34 78 78 78Q122 78 122 124L134 258H22Z" fill="#fbe05c" stroke="#2a1f33" stroke-width="3" stroke-linejoin="round"/>
+              <!-- Soft rose-tinted apron overlay -->
               <path d="M52 100H104L112 258H44Z" fill="#f8b9cb" stroke="#2a1f33" stroke-width="3" stroke-linejoin="round"/>
               <path d="M40 124Q24 160 36 190" fill="none" stroke="#b9764d" stroke-width="12" stroke-linecap="round"/>
               <!-- Animated waving arm -->
@@ -231,9 +235,13 @@
             </g>
           </svg>
 
-          <!-- Welcome Speech Bubble -->
-          <div class="bubble" role="group" aria-label="Shopkeeper greeting">
-            <p>Come in, come in! Want to build your own flower, or pick a ready kit?</p>
+          <!-- Welcome Speech Bubble with Salesperson Avatar Card Badge -->
+          <div class="bubble salesperson-card" role="group" aria-label="Shopkeeper greeting">
+            <div class="flex items-center gap-2 mb-2">
+              <span class="salesperson-pill text-xs font-bold px-2 py-0.5 rounded-full uppercase tracking-wider">Artisan Florist</span>
+              <span class="text-xs font-artistic text-muted">@artis_tically22</span>
+            </div>
+            <p>Welcome to <span class="font-artistic text-2xl font-bold">Artistically.</span>! Build your own custom flower, or pick a ready kit?</p>
             <div class="choices">
               <button class="btn" id="goKits" type="button">← Ready kits</button>
               <button class="btn primary" id="goBuild" type="button">Build my own →</button>
@@ -473,3 +481,4 @@
   <script type="module" src="assets/js/app.js"></script>
 </body>
 </html>
+

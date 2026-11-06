@@ -201,26 +201,31 @@ export function exportFlowerCanvas(state, costSummary) {
         // Draw rendered flower artwork
         ctx.drawImage(img, 60, 40, 840, 980);
 
-        // Badge & Typography
+        // Badge & Typography featuring Artistically. Avillia aesthetic
         const spec = FL[state.flower] || FL.sunflower;
         ctx.fillStyle = '#2a1f33';
         ctx.textAlign = 'center';
 
-        ctx.font = '800 44px "Baloo 2", system-ui, sans-serif';
-        ctx.fillText(`${spec.name} · ${spec.banglaName || ''}`.trim(), 480, 1070);
+        // Elegant "Artistically." brand mark at top/bottom
+        ctx.font = '700 48px "Avillia", "Playfair Display", "Bodoni Moda", Didot, serif';
+        ctx.fillText('Artistically.', 480, 1060);
 
-        ctx.font = '700 28px "Nunito", system-ui, sans-serif';
-        ctx.fillStyle = '#675c71';
+        ctx.font = '700 32px "Baloo 2", system-ui, sans-serif';
+        ctx.fillStyle = '#4a3d56';
+        ctx.fillText(`${spec.name} (${spec.banglaName || ''}) · ${state.petals} Petals`, 480, 1106);
+
+        ctx.font = '600 24px "Nunito", system-ui, sans-serif';
+        ctx.fillStyle = '#7a6e84';
         const colorBreakdown = costSummary.lines.map(l => `${l.n} ${l.col}`).join(' · ');
-        ctx.fillText(colorBreakdown, 480, 1118);
+        ctx.fillText(colorBreakdown, 480, 1148);
 
-        ctx.font = '800 32px "Baloo 2", system-ui, sans-serif';
+        ctx.font = '800 28px "Baloo 2", system-ui, sans-serif';
         ctx.fillStyle = '#d93a3a';
-        ctx.fillText(`Total Cleaners: ${costSummary.totalCleaners} · ৳${costSummary.grandTotal}`, 480, 1166);
+        ctx.fillText(`Materials: ${costSummary.totalCleaners} Pipe Cleaners · ৳${costSummary.grandTotal}`, 480, 1190);
 
-        ctx.font = '600 22px "Nunito", system-ui, sans-serif';
-        ctx.fillStyle = '#8c7e97';
-        ctx.fillText(`${CFG.shop} — Handcrafted in Rajshahi`, 480, 1205);
+        ctx.font = '700 18px "Nunito", system-ui, sans-serif';
+        ctx.fillStyle = '#9b8fa5';
+        ctx.fillText(`@artis_tically22 — Handcrafted in Rajshahi`, 480, 1222);
 
         URL.revokeObjectURL(url);
         resolve(canvas.toDataURL('image/png'));
@@ -237,3 +242,29 @@ export function exportFlowerCanvas(state, costSummary) {
     }
   });
 }
+
+/**
+ * Programmatic Automated Canvas Snapshot Capture Utility
+ * Exposes a clean API for background jobs, testing harnesses, and automation workers.
+ */
+export async function exportCurrentWorkbenchSnapshot(state, costSummary, options = {}) {
+  const dataUrl = await exportFlowerCanvas(state, costSummary);
+  const metadata = {
+    flower: state.flower,
+    petals: state.petals,
+    lpc: state.lpc,
+    colors: costSummary.lines.map(l => ({ color: l.col, count: l.n })),
+    totalCleaners: costSummary.totalCleaners,
+    totalPrice: costSummary.grandTotal,
+    timestamp: new Date().toISOString(),
+    instagramTarget: CFG.instagramUrl,
+    exportedBy: 'Artistically. Workbench Engine'
+  };
+
+  return {
+    dataUrl,
+    metadata,
+    mimeType: 'image/png'
+  };
+}
+

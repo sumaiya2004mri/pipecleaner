@@ -1,13 +1,15 @@
 /**
- * Fuzzy Petal Shop - Configuration & Data Models
+ * Artistically. - Configuration & Data Models
  * Clean Code Architecture: Centralized, immutable configuration & design tokens.
  */
 
 export const CFG = {
-  shop: 'Fuzzy Petal Shop',
+  shop: 'Artistically.',
+  brandFont: "'Avillia', 'Playfair Display', 'Bodoni Moda', serif",
   tagline: 'Handcrafted Pipe Cleaner Blooms · রাজশাহী',
-  instagram: 'fuzzypetal',          // Default shop Instagram handle
-  email: 'fuzzypetalshop@gmail.com', // Backup email routing
+  instagram: 'artis_tically22',       // Target Instagram handle
+  instagramUrl: 'https://www.instagram.com/artis_tically22/',
+  email: 'sumaiyamrittika22@gmail.com', // Studio email routing
   pricePerCleaner: 2,               // ৳ per pipe cleaner (4 tk per 2 cleaners)
   platformFee: 10,                  // Fixed platform processing fee (৳)
   deliveryFee: 50,                  // Flat delivery fee for Rajshahi (৳)
@@ -166,3 +168,4 @@ export const KITS = [
     desc: 'Calming lavender sprig designed with slender vertical floral coils.'
   }
 ];
+
