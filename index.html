@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="description" content="Fuzzy Petal Shop - Custom handcrafted pipe cleaner flower workbench and kits in Rajshahi. Customize petals, colors, coils, and order via Instagram or Email.">
+  <meta name="theme-color" content="#f7cf2a">
+  <title>Fuzzy Petal Shop · Handcrafted Pipe Cleaner Blooms</title>
+
+  <!-- Google Fonts: Baloo 2, Baloo Da 2 (Bengali), Nunito -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&family=Baloo+Da+2:wght@600;700&family=Nunito:wght@500;600;700;800;900&display=swap">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            bg: 'var(--bg)',
+            panel: 'var(--panel)',
+            soft: 'var(--soft)',
+            ink: 'var(--ink)',
+            muted: 'var(--muted)',
+            line: 'var(--line)',
+            accent: 'var(--accent)',
+            'accent-ink': 'var(--accent-ink)',
+            danger: 'var(--danger)',
+            ok: 'var(--ok)'
+          },
+          fontFamily: {
+            display: ['"Baloo 2"', '"Baloo Da 2"', 'sans-serif'],
+            body: ['Nunito', 'sans-serif']
+          }
+        }
+      }
+    };
+  </script>
+
+  <!-- Tactile Design Tokens & Styles -->
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body class="bg-bg text-ink font-body antialiased selection:bg-accent selection:text-ink">
+
+  <!-- Sound Toggle Button -->
+  <button class="sound" id="soundBtn" aria-label="Turn sound off" title="Sound Effects">🔔</button>
+
+  <main>
+    <!-- 1. THE SHOP DOOR -->
+    <section class="screen active" id="s-door" aria-label="Shop front">
+      <div class="scene door" id="doorScene">
+        <div class="scene-in">
+          <svg class="art" viewBox="0 0 360 640" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Fuzzy Petal Shop boutique exterior with a sky-blue arched entrance">
+            <defs>
+              <linearGradient id="skyGrad" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#bfe3fa"/>
+                <stop offset="100%" stop-color="#fde9ef"/>
+              </linearGradient>
+              <linearGradient id="doorGlow" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#fff5cc"/>
+                <stop offset="100%" stop-color="#ffd46b"/>
+              </linearGradient>
+            </defs>
+
+            <!-- Sky backdrop -->
+            <rect width="360" height="640" fill="url(#skyGrad)"/>
+
+            <!-- Fluffy clouds -->
+            <g fill="#ffffff" opacity="0.88">
+              <ellipse cx="68" cy="58" rx="42" ry="15"/>
+              <ellipse cx="94" cy="48" rx="28" ry="15"/>
+              <ellipse cx="292" cy="88" rx="46" ry="15"/>
+              <ellipse cx="272" cy="78" rx="26" ry="13"/>
+            </g>
+
+            <!-- Warm morning sun -->
+            <circle cx="316" cy="38" r="22" fill="#ffe27a"/>
+
+            <!-- Sidewalk ground -->
+            <rect y="560" width="360" height="80" fill="#e3d3c2"/>
+            <rect y="556" width="360" height="8" fill="#cdbba6"/>
+
+            <!-- Boutique building facade -->
+            <rect x="24" y="130" width="312" height="430" rx="8" fill="#f8b9cb"/>
+            <g stroke="#e98fab" stroke-width="2" opacity="0.45">
+              <path d="M24 330H336M24 380H336M24 430H336M24 480H336M24 530H336"/>
+            </g>
+            <rect x="14" y="116" width="332" height="26" rx="6" fill="#e98fab"/>
+
+            <!-- Boutique Hanging Wooden Sign -->
+            <path d="M110 142V172M250 142V172" stroke="#5c3d1f" stroke-width="3"/>
+            <rect x="58" y="170" width="244" height="72" rx="14" fill="#8a5a3c" stroke="#2a1f33" stroke-width="3"/>
+            <text x="180" y="208" text-anchor="middle" font-family="'Baloo 2', sans-serif" font-weight="800" font-size="32" fill="#fff4d6">Fuzzy Petal</text>
+            <text x="180" y="230" text-anchor="middle" font-family="'Baloo Da 2', 'Baloo 2', sans-serif" font-weight="700" font-size="14" fill="#f7cf2a">স্বাগতম · pipe cleaner flowers</text>
+
+            <!-- Striped Canvas Awning -->
+            <g>
+              <path d="M30 258H330V292H30Z" fill="#ffffff"/>
+              <g fill="#f7cf2a">
+                <rect x="30" y="258" width="50" height="34"/>
+                <rect x="130" y="258" width="50" height="34"/>
+                <rect x="230" y="258" width="50" height="34"/>
+                <path d="M30 292a25 18 0 0 0 50 0Z"/>
+                <path d="M130 292a25 18 0 0 0 50 0Z"/>
+                <path d="M230 292a25 18 0 0 0 50 0Z"/>
+              </g>
+              <g fill="#ffffff">
+                <path d="M80 292a25 18 0 0 0 50 0Z"/>
+                <path d="M180 292a25 18 0 0 0 50 0Z"/>
+                <path d="M280 292a25 18 0 0 0 50 0Z"/>
+              </g>
+              <path d="M30 258H330" stroke="#2a1f33" stroke-width="3"/>
+            </g>
+
+            <!-- Flower Showcase Window -->
+            <rect x="44" y="330" width="116" height="170" rx="10" fill="#fff7e8" stroke="#2a1f33" stroke-width="3"/>
+            <rect x="54" y="340" width="96" height="150" rx="6" fill="#d9f0ff"/>
+            <rect x="54" y="438" width="96" height="8" fill="#a96f43"/>
+            <g stroke="#2f9e4f" stroke-width="4" stroke-linecap="round">
+              <path d="M75 438V400M102 438V388M129 438V404"/>
+            </g>
+            <g>
+              <!-- Sunflower in window -->
+              <circle cx="75" cy="396" r="11" fill="none" stroke="#f7cf2a" stroke-width="5"/>
+              <circle cx="75" cy="396" r="4" fill="#6b3f22"/>
+              <!-- Daisy in window -->
+              <circle cx="102" cy="384" r="11" fill="none" stroke="#fbfbf8" stroke-width="5"/>
+              <circle cx="102" cy="384" r="4" fill="#f7cf2a"/>
+              <!-- Tulip in window -->
+              <circle cx="129" cy="400" r="10" fill="#d93a3a"/>
+            </g>
+
+            <!-- Arched Door Portal with Warm Light -->
+            <path d="M190 560V352Q190 304 245 304Q300 304 300 352V560Z" fill="url(#doorGlow)" stroke="#2a1f33" stroke-width="3"/>
+
+            <!-- Interactive Door Panel -->
+            <g id="doorBtn" tabindex="0" role="button" aria-label="Open the Fuzzy Petal Shop door">
+              <g id="doorPanel">
+                <path d="M190 560V352Q190 304 245 304Q300 304 300 352V560Z" fill="#4a90d9" stroke="#2a1f33" stroke-width="3"/>
+                <path d="M204 548V356Q204 322 245 322Q286 322 286 356V548Z" fill="none" stroke="#2f6db3" stroke-width="3"/>
+                <!-- Golden doorknob -->
+                <circle cx="281" cy="440" r="7" fill="#f7cf2a" stroke="#2a1f33" stroke-width="2.5"/>
+                <!-- OPEN sign -->
+                <rect x="222" y="392" width="46" height="24" rx="6" fill="#f8b9cb" stroke="#2a1f33" stroke-width="2.5"/>
+                <text x="245" y="409" text-anchor="middle" font-family="'Baloo 2', sans-serif" font-weight="800" font-size="14" fill="#2a1f33">OPEN</text>
+              </g>
+              <rect x="180" y="296" width="130" height="270" fill="transparent"/>
+            </g>
+
+            <!-- Door chime bell -->
+            <path d="M232 296h26" stroke="#5c3d1f" stroke-width="3"/>
+            <path d="M245 296v6" stroke="#5c3d1f" stroke-width="3"/>
+            <path d="M236 316q9 -22 18 0z" fill="#f7cf2a" stroke="#2a1f33" stroke-width="2"/>
+            <circle cx="245" cy="318" r="2.5" fill="#2a1f33"/>
+
+            <!-- Clay Flower Pot -->
+            <g>
+              <path d="M312 530h26l-4 30h-18Z" fill="#c4724a" stroke="#2a1f33" stroke-width="2.5"/>
+              <path d="M325 530V500" stroke="#2f9e4f" stroke-width="4"/>
+              <circle cx="325" cy="494" r="9" fill="none" stroke="#f08fb0" stroke-width="5"/>
+            </g>
+
+            <!-- Animated Hint Prompt -->
+            <g class="hint">
+              <text x="245" y="606" text-anchor="middle" font-family="'Baloo 2', sans-serif" font-weight="800" font-size="17" fill="#2a1f33">tap the door ↑</text>
+            </g>
+          </svg>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. INSIDE THE SHOP (GREETING & CHOICE) -->
+    <section class="screen" id="s-shop" aria-label="Inside the shop">
+      <div class="scene shop" id="shopScene">
+        <div class="scene-in">
+          <svg class="art" viewBox="0 0 360 640" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
+            <!-- Warm wooden wall & floor planks -->
+            <rect width="360" height="640" fill="#fff0bf"/>
+            <rect y="486" width="360" height="154" fill="#d9a56c"/>
+            <g stroke="#b9854c" stroke-width="2" opacity="0.7">
+              <path d="M0 520H360M0 560H360M0 600H360"/>
+              <path d="M60 486V520M180 486V520M300 486V520M120 520V560M240 520V560M60 560V600M180 560V600M300 560V600"/>
+            </g>
+            <rect y="478" width="360" height="10" fill="#8a5a3c"/>
+
+            <!-- Bunting garland -->
+            <path d="M0 18Q90 52 180 18T360 18" stroke="#2a1f33" stroke-width="2.5" fill="none"/>
+            <g stroke="#2a1f33" stroke-width="2">
+              <path d="M30 33l12 26 12-22Z" fill="#f08fb0"/>
+              <path d="M78 43l12 26 12-26Z" fill="#8fcbf2"/>
+              <path d="M128 40l12 26 12-26Z" fill="#f7cf2a"/>
+              <path d="M200 40l12 26 12-26Z" fill="#f08fb0"/>
+              <path d="M250 43l12 26 12-26Z" fill="#8fcbf2"/>
+              <path d="M300 33l12 26 12-26Z" fill="#f7cf2a"/>
+            </g>
+
+            <!-- Wall shelving with pipe cleaner glass jars -->
+            <g>
+              <rect x="186" y="250" width="160" height="10" rx="3" fill="#8a5a3c"/>
+              <rect x="186" y="350" width="160" height="10" rx="3" fill="#8a5a3c"/>
+              <rect x="186" y="450" width="160" height="10" rx="3" fill="#8a5a3c"/>
+              <g id="jars"></g>
+            </g>
+
+            <!-- Friendly Shopkeeper with waving arm -->
+            <g transform="translate(10,316)">
+              <ellipse cx="78" cy="262" rx="70" ry="9" fill="#000000" opacity="0.14"/>
+              <path d="M34 124Q34 78 78 78Q122 78 122 124L134 258H22Z" fill="#f7cf2a" stroke="#2a1f33" stroke-width="3" stroke-linejoin="round"/>
+              <path d="M52 100H104L112 258H44Z" fill="#f8b9cb" stroke="#2a1f33" stroke-width="3" stroke-linejoin="round"/>
+              <path d="M40 124Q24 160 36 190" fill="none" stroke="#b9764d" stroke-width="12" stroke-linecap="round"/>
+              <!-- Animated waving arm -->
+              <g class="wave">
+                <path d="M112 118Q142 100 146 66" fill="none" stroke="#b9764d" stroke-width="12" stroke-linecap="round"/>
+                <circle cx="147" cy="60" r="9" fill="#b9764d" stroke="#2a1f33" stroke-width="2.5"/>
+              </g>
+              <circle cx="78" cy="46" r="36" fill="#b9764d" stroke="#2a1f33" stroke-width="3"/>
+              <circle cx="78" cy="2" r="15" fill="#241a1f" stroke="#2a1f33" stroke-width="3"/>
+              <path d="M42 46Q40 6 78 6Q116 6 114 46Q100 24 78 24Q56 24 42 46Z" fill="#241a1f"/>
+              <circle cx="64" cy="50" r="3.6" fill="#2a1f33"/>
+              <circle cx="92" cy="50" r="3.6" fill="#2a1f33"/>
+              <circle cx="56" cy="60" r="6" fill="#f08fb0" opacity="0.7"/>
+              <circle cx="100" cy="60" r="6" fill="#f08fb0" opacity="0.7"/>
+              <path d="M66 63Q78 76 90 63" fill="none" stroke="#2a1f33" stroke-width="3" stroke-linecap="round"/>
+              <!-- Rose boutonniere on apron -->
+              <g stroke="#2a1f33" stroke-width="2.5">
+                <circle cx="78" cy="138" r="9" fill="#d93a3a" stroke="none"/>
+                <path d="M78 147V170" stroke="#2f9e4f" stroke-width="4" stroke-linecap="round"/>
+              </g>
+            </g>
+          </svg>
+
+          <!-- Welcome Speech Bubble -->
+          <div class="bubble" role="group" aria-label="Shopkeeper greeting">
+            <p>Come in, come in! Want to build your own flower, or pick a ready kit?</p>
+            <div class="choices">
+              <button class="btn" id="goKits" type="button">← Ready kits</button>
+              <button class="btn primary" id="goBuild" type="button">Build my own →</button>
+            </div>
+          </div>
+          <div class="swipe-note">swipe right to build · swipe left for kits</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. FLOWER DOORS (VARIETY SELECTION) -->
+    <section class="screen" id="s-doors" aria-label="Pick a flower variety">
+      <div class="page px-4 sm:px-6">
+        <div class="topbar">
+          <button class="back" data-go="shop" type="button">← Back to Shop</button>
+        </div>
+        <h2 class="title mt-2 font-display font-extrabold text-ink">Which door will you open?</h2>
+        <p class="lead">Each door leads to an artisan workbench for a specific flower shape. You can tweak petal counts, fullness, coils, and colors in real-time.</p>
+        <div class="rail">
+          <div class="doors" id="doorList"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. INTERACTIVE WORKBENCH -->
+    <section class="screen" id="s-build" aria-label="Flower workbench">
+      <div class="page px-4 sm:px-6">
+        <div class="topbar">
+          <button class="back" id="buildBack" type="button">← Doors</button>
+          <h2 id="buildTitle" class="text-xl sm:text-2xl font-display font-extrabold text-ink">Sunflower Workbench</h2>
+        </div>
+
+        <div class="build mt-4">
+          <!-- Vector Stage with live price tag -->
+          <div class="stage">
+            <div id="stage" class="transition-all duration-150"></div>
+            <div class="tag" id="tag" aria-live="polite"></div>
+          </div>
+
+          <!-- Workbench Control Panel -->
+          <div class="panel">
+            <!-- Tabs: Petals, Center Coil, Leaves, Stem -->
+            <div class="tabs" role="tablist" id="tabs"></div>
+
+            <!-- Pane 1: Petals -->
+            <div class="pane" id="pane-petals">
+              <div class="flex items-center justify-between">
+                <span class="lbl">Petal Count</span>
+                <span class="count text-accent-ink" id="petalVal">12</span>
+              </div>
+              <div class="row">
+                <input class="slider" id="petalRange" type="range" aria-label="Number of petals">
+              </div>
+
+              <span class="lbl mt-1">Petal Fullness & Style</span>
+              <div class="seg" id="fullSeg"></div>
+
+              <span class="lbl mt-1">Petal Chenille Color</span>
+              <div class="swatches" data-part="pc"></div>
+            </div>
+
+            <!-- Pane 2: Center Coil -->
+            <div class="pane" id="pane-centre" hidden>
+              <span class="lbl">Center Coil Color</span>
+              <div class="swatches" data-part="cc"></div>
+              <p class="hintline">The center spiral automatically expands with petal count, and the bill follows pipe cleaner usage.</p>
+            </div>
+
+            <!-- Pane 3: Leaves -->
+            <div class="pane" id="pane-leaves" hidden>
+              <span class="lbl">Foliage Count</span>
+              <div class="stepper">
+                <button class="btn" id="leafMinus" type="button" aria-label="Fewer leaves">−</button>
+                <div class="count" id="leafVal">2</div>
+                <button class="btn" id="leafPlus" type="button" aria-label="More leaves">+</button>
+              </div>
+
+              <span class="lbl mt-1">Leaf Chenille Color</span>
+              <div class="swatches" data-part="lc"></div>
+              <p class="hintline">One pipe cleaner wire craftily creates two fluffy leaves.</p>
+            </div>
+
+            <!-- Pane 4: Stem -->
+            <div class="pane" id="pane-stem" hidden>
+              <span class="lbl">Stem Wire Wrap Color</span>
+              <div class="swatches" data-part="sc"></div>
+              <p class="hintline">The foundation stem wraps snugly around rigid floral support wire.</p>
+            </div>
+
+            <button class="btn primary w-full mt-2" id="doneBtn" type="button">
+              I love it, show my bill →
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. CHECKOUT & ORDER PANEL -->
+    <section class="screen" id="s-checkout" aria-label="Your bill and order">
+      <div class="page px-4 sm:px-6">
+        <div class="topbar">
+          <button class="back" id="checkBack" type="button">← Back</button>
+        </div>
+        <h2 class="title mt-2 font-display font-extrabold text-ink">Your Bill & Delivery</h2>
+        <p class="lead">Review your custom materials summary, provide your Rajshahi address, and submit your order.</p>
+
+        <div class="checkout mt-4">
+          <!-- Receipt Card -->
+          <div class="receipt">
+            <div class="pic">
+              <div class="mini" id="miniFlower"></div>
+              <div>
+                <h3 id="billName" class="font-display font-bold">Sunflower</h3>
+                <button class="btn small mt-1" id="savePic" type="button">📷 Save my picture</button>
+              </div>
+            </div>
+            <table class="bill" id="bill"></table>
+          </div>
+
+          <!-- Checkout Form with Local Storage Auto-fill -->
+          <form class="form" id="orderForm" novalidate autocomplete="on">
+            <div class="field">
+              <label for="f-name">Your Full Name</label>
+              <input id="f-name" name="name" autocomplete="name" placeholder="e.g. Sumaiya Rahman" required>
+            </div>
+
+            <div class="field">
+              <label for="f-phone">Mobile Phone (BD)</label>
+              <input id="f-phone" name="tel" type="tel" inputmode="tel" autocomplete="tel" placeholder="01XXXXXXXXX" required>
+            </div>
+
+            <div class="field">
+              <label for="f-city">Delivery City</label>
+              <select id="f-city" name="city" autocomplete="address-level2">
+                <option value="rajshahi" selected>Rajshahi (৳50 Flat Courier)</option>
+                <option value="other">Outside Rajshahi (Currently unavailable)</option>
+              </select>
+            </div>
+
+            <!-- Regional Delivery Notice Banner -->
+            <div class="notice" id="regionNote" hidden role="status">
+              ⚠️ Delivery is not available for your region yet. We currently deliver exclusively within Rajshahi metropolitan area.
+            </div>
+
+            <div class="field">
+              <label for="f-area">Neighborhood / Area</label>
+              <input id="f-area" name="area" autocomplete="address-level3" placeholder="e.g. Shaheb Bazar, Kazla, Motihar" required>
+            </div>
+
+            <div class="field">
+              <label for="f-addr">Full Street Address</label>
+              <textarea id="f-addr" name="address" autocomplete="street-address" placeholder="House / Holding number, Road, Landmark..." required></textarea>
+            </div>
+
+            <p class="err" id="formErr" role="alert"></p>
+
+            <div class="orders">
+              <button class="btn primary" id="orderIG" type="button">
+                Order via Instagram Direct
+              </button>
+              <button class="btn" id="orderMail" type="button">
+                Order by Email instead
+              </button>
+            </div>
+
+            <p class="small-note text-center">
+              🔒 Your contact information is saved privately on this device for instant return ordering.
+            </p>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. READY KITS SHOWCASE -->
+    <section class="screen" id="s-kits" aria-label="Ready kits">
+      <div class="page px-4 sm:px-6">
+        <div class="topbar">
+          <button class="back" data-go="shop" type="button">← Back to Shop</button>
+        </div>
+        <h2 class="title mt-2 font-display font-extrabold text-ink">Ready Kits</h2>
+        <p class="lead">Hand-curated pipe cleaner bouquet kits. Order as designed, or launch any kit directly into the interactive workbench to customize colors and petals.</p>
+
+        <div class="kits mt-6" id="kitList"></div>
+
+        <p class="small-note text-center mt-6">
+          Standard platform handling fee ৳10 and local Rajshahi delivery ৳50 are added on the final bill.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <!-- OVERLAYS & MODALS -->
+
+  <!-- Fullness Picker Modal -->
+  <div class="overlay" id="fullDlg" hidden role="dialog" aria-modal="true" aria-labelledby="fullTitle">
+    <div class="card">
+      <h3 id="fullTitle" class="font-display font-bold">How full do you want your petals?</h3>
+      <p class="text-sm text-muted">Choose your preferred petal wire density. You can always change this in the workbench.</p>
+      <div class="optlist" id="fullOpts"></div>
+      <button class="btn small" id="fullCancel" type="button">Cancel</button>
+    </div>
+  </div>
+
+  <!-- Order Routing & Copy Modal -->
+  <div class="overlay" id="orderDlg" hidden role="dialog" aria-modal="true" aria-labelledby="orderTitle">
+    <div class="card">
+      <h3 id="orderTitle" class="font-display font-bold">Confirm Your Order</h3>
+      <p class="small-note" id="orderHelp"></p>
+      <div id="mailBox" hidden class="field">
+        <label for="mailAddr">Send to Studio Address</label>
+        <input id="mailAddr" readonly class="bg-gray-100 font-mono text-xs">
+      </div>
+      <textarea id="orderText" readonly aria-label="Formatted order message"></textarea>
+      <p class="err" id="copyMsg" style="color:var(--ok)"></p>
+      <div class="actions">
+        <button class="btn primary" id="copyBtn" type="button">Copy Order Text</button>
+        <a class="btn" id="openLink" target="_blank" rel="noopener" href="#">Open</a>
+        <button class="btn small" id="orderClose" type="button">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Flower Picture Export Modal -->
+  <div class="overlay" id="picDlg" hidden role="dialog" aria-modal="true" aria-labelledby="picTitle">
+    <div class="card">
+      <h3 id="picTitle" class="font-display font-bold">Your Custom Flower</h3>
+      <img class="snap" id="picImg" alt="High resolution rendering of your custom pipe cleaner flower">
+      <p class="small-note text-center">Press and hold the card (or right-click) to save the PNG image to your device.</p>
+      <button class="btn w-full" id="picClose" type="button">Close</button>
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div class="toast" id="toast" hidden role="status"></div>
+
+  <!-- Application Script Module -->
+  <script type="module" src="assets/js/app.js"></script>
+</body>
+</html>
