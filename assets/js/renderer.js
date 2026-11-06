@@ -94,8 +94,10 @@ export function flowerSVG(state, options = {}) {
     out += `<g transform="translate(${cx} ${yPos}) scale(${scale})">${fuzz(leafPath, leafColor, 7)}</g>`;
   }
 
-  // 3. Flower Blossom Head
-  const petalColor = COL[state.pc] || COL.yellow;
+  // 3. Flower Blossom Head (Supports Multi-Color Petal Matrix)
+  const colPrimary = COL[state.pc] || COL.yellow;
+  const colAccent = COL[state.pc2] || COL.white;
+  const petalMode = state.petalMode || 'single'; // 'single', 'alternate', 'duo_layer'
 
   if (spec.tulip) {
     // Sculpted multi-layered cupped petals
@@ -110,13 +112,15 @@ export function flowerSVG(state, options = {}) {
     const PetalPath = k =>
       `M0 0 C${-pw * k} ${-ph * k * 0.12} ${-pw * k} ${-ph * k * 0.86} 0 ${-ph * k} C${pw * k} ${-ph * k * 0.86} ${pw * k} ${-ph * k * 0.12} 0 0Z`;
 
-    angles.forEach(ang => {
+    angles.forEach((ang, i) => {
+      const pCol = petalMode === 'alternate' ? (i % 2 === 0 ? colPrimary : colAccent) : colPrimary;
+      const innerCol = petalMode === 'duo_layer' ? colAccent : pCol;
       out += `
         <g transform="translate(${cx} ${cy}) rotate(${ang.toFixed(1)})">
-          <path d="${PetalPath(1)}" fill="${petalColor}" opacity="0.95"/>
-          ${fuzz(PetalPath(1), petalColor, 7.5)}
-          ${fuzz(PetalPath(0.72), petalColor, 6)}
-          ${fuzz(PetalPath(0.44), petalColor, 5)}
+          <path d="${PetalPath(1)}" fill="${pCol}" opacity="0.95"/>
+          ${fuzz(PetalPath(1), pCol, 7.5)}
+          ${fuzz(PetalPath(0.72), innerCol, 6)}
+          ${fuzz(PetalPath(0.44), innerCol, 5)}
         </g>
       `;
     });
@@ -138,14 +142,26 @@ export function flowerSVG(state, options = {}) {
 
     out += `<g transform="translate(${cx} ${cy}) scale(${autoScale.toFixed(3)}) translate(${-cx} ${-cy})">`;
 
-    // Radial petals
+    // Radial petals with multi-color alternating / duo-layer support
     for (let i = 0; i < N; i++) {
       const angle = (i * 360) / N;
+      const pCol = petalMode === 'alternate' ? (i % 2 === 0 ? colPrimary : colAccent) : colPrimary;
+
       out += `
         <g transform="rotate(${angle.toFixed(2)} ${cx} ${cy}) translate(${cx} ${(cy - r0).toFixed(1)})">
-          ${fuzz(loopPath, petalColor, strokeWidth)}
+          ${fuzz(loopPath, pCol, strokeWidth)}
         </g>
       `;
+
+      // Render inner layered loops if duo_layer mode is enabled
+      if (petalMode === 'duo_layer') {
+        const offsetAngle = angle + (180 / N);
+        out += `
+          <g transform="rotate(${offsetAngle.toFixed(2)} ${cx} ${cy}) translate(${cx} ${(cy - r0 * 0.93).toFixed(1)}) scale(0.76)">
+            ${fuzz(loopPath, colAccent, strokeWidth - 1)}
+          </g>
+        `;
+      }
     }
 
     // Coiled Pipe Cleaner Center Disc
@@ -212,7 +228,7 @@ export function exportFlowerCanvas(state, costSummary) {
 
         ctx.font = '700 32px "Baloo 2", system-ui, sans-serif';
         ctx.fillStyle = '#4a3d56';
-        ctx.fillText(`${spec.name} (${spec.banglaName || ''}) · ${state.petals} Petals`, 480, 1106);
+        ctx.fillText(`${spec.name} (${spec.subtitle || 'Handcrafted Bloom'}) · ${state.petals} Petals`, 480, 1106);
 
         ctx.font = '600 24px "Nunito", system-ui, sans-serif';
         ctx.fillStyle = '#7a6e84';
@@ -221,7 +237,7 @@ export function exportFlowerCanvas(state, costSummary) {
 
         ctx.font = '800 28px "Baloo 2", system-ui, sans-serif';
         ctx.fillStyle = '#d93a3a';
-        ctx.fillText(`Materials: ${costSummary.totalCleaners} Pipe Cleaners · ৳${costSummary.grandTotal}`, 480, 1190);
+        ctx.fillText(`Materials: ${costSummary.totalCleaners} Pipe Cleaners · BDT ${costSummary.grandTotal}`, 480, 1190);
 
         ctx.font = '700 18px "Nunito", system-ui, sans-serif';
         ctx.fillStyle = '#9b8fa5';

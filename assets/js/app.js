@@ -11,7 +11,7 @@ import { flowerSVG, exportFlowerCanvas } from './renderer.js';
 // DOM utility helpers
 const $ = selector => document.querySelector(selector);
 const $$ = selector => Array.from(document.querySelectorAll(selector));
-const formatTk = num => `৳${num}`;
+const formatTk = num => `BDT ${num}`;
 const capitalize = str => str ? str.charAt(0).toUpperCase() + str.slice(1) : '';
 
 class AppController {
@@ -53,10 +53,21 @@ class AppController {
     this.petalRange = $('#petalRange');
     this.petalVal = $('#petalVal');
     this.fullSeg = $('#fullSeg');
+    this.paletteModeSeg = $('#paletteModeSeg');
+    this.boxPc2 = $('#box-pc2');
+    this.lblPc = $('#lbl-pc');
     this.leafMinus = $('#leafMinus');
     this.leafPlus = $('#leafPlus');
     this.leafVal = $('#leafVal');
     this.doneBtn = $('#doneBtn');
+
+    // Lo-Fi Background Music Player Controls
+    this.lofiPlayer = $('#lofiPlayer');
+    this.lofiPlayBtn = $('#lofiPlayBtn');
+    this.lofiIcon = $('#lofiIcon');
+    this.lofiTrackTitle = $('#lofiTrackTitle');
+    this.lofiNextBtn = $('#lofiNextBtn');
+    this.lofiLiveDot = $('#lofiLiveDot');
 
     // Checkout
     this.checkBack = $('#checkBack');
@@ -205,6 +216,45 @@ class AppController {
       store.setFlower({ lpc: parseInt(btn.dataset.lpc, 10) });
       audio.pop();
     });
+
+    // Multi-Color Petal Palette Matrix Mode Selector
+    if (this.paletteModeSeg) {
+      this.paletteModeSeg.addEventListener('click', e => {
+        const btn = e.target.closest('[data-mode]');
+        if (!btn) return;
+        const mode = btn.dataset.mode;
+        store.setFlower({ petalMode: mode });
+        audio.pop(620);
+        this.showToast(`Petal mode: ${mode === 'single' ? 'Solid' : mode === 'alternate' ? 'Two-Tone Alternating' : 'Duo-Layer Depth'}`);
+      });
+    }
+
+    // Lo-Fi Background Music Atmosphere Event Listeners
+    if (this.lofiPlayBtn) {
+      this.lofiPlayBtn.addEventListener('click', () => {
+        const isPlaying = audio.toggleLofi();
+        this.lofiIcon.textContent = isPlaying ? '⏸' : '▶';
+        if (this.lofiLiveDot) {
+          this.lofiLiveDot.className = isPlaying ? 'w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse' : 'w-1.5 h-1.5 rounded-full bg-gray-400';
+        }
+        const current = audio.getCurrentTrack();
+        if (this.lofiTrackTitle) {
+          this.lofiTrackTitle.textContent = current.title;
+        }
+        this.showToast(isPlaying ? `Lo-Fi On: ${current.title}` : 'Lo-Fi Paused');
+      });
+    }
+
+    if (this.lofiNextBtn) {
+      this.lofiNextBtn.addEventListener('click', () => {
+        const next = audio.nextTrack();
+        if (this.lofiTrackTitle) {
+          this.lofiTrackTitle.textContent = next.title;
+        }
+        this.showToast(`Track: ${next.title}`);
+        audio.pop(640);
+      });
+    }
 
     // Swatches selection (petals, center, leaves, stem)
     $$('.swatches').forEach(container => {
@@ -523,7 +573,23 @@ class AppController {
       </button>
     `).join('');
 
-    // Swatches
+    // Multi-Color Palette Matrix sync
+    const currentMode = s.petalMode || 'single';
+    if (this.paletteModeSeg) {
+      this.paletteModeSeg.querySelectorAll('.mode-btn').forEach(btn => {
+        btn.setAttribute('aria-pressed', btn.dataset.mode === currentMode);
+      });
+    }
+
+    if (this.boxPc2) {
+      this.boxPc2.hidden = currentMode === 'single';
+    }
+
+    if (this.lblPc) {
+      this.lblPc.textContent = currentMode === 'single' ? 'Petal Chenille Color' : 'Primary Petal Color';
+    }
+
+    // Swatches (including primary pc and secondary pc2 swatches)
     $$('.swatches').forEach(box => {
       const partKey = box.dataset.part;
       box.innerHTML = COLNAMES.map(c => `
@@ -539,11 +605,11 @@ class AppController {
     // Live Vector Stage
     this.stage.innerHTML = flowerSVG(s, { uid: 'stage_' + s.flower });
 
-    // Price estimate badge
+    // Price estimate badge (Strict 100% English formatting)
     const cost = store.calculateCost();
     this.priceTag.innerHTML = `
       <span class="font-extrabold text-ink">${cost.totalCleaners} Pipe Cleaners · ${formatTk(cost.subtotal)}</span>
-      <small class="block text-xs text-muted font-bold">+ ৳${CFG.platformFee} platform fee</small>
+      <small class="block text-xs text-muted font-bold">+ BDT ${CFG.platformFee} platform fee</small>
     `;
   }
 
@@ -653,7 +719,7 @@ class AppController {
 Flower: ${spec.name} (${s.petals} Petals, ${s.leaves} Leaves)
 Pipe Cleaners: ${materialsSummary}
 Total Materials: ${cost.totalCleaners} pieces
-Total Payable: ${formatTk(cost.grandTotal)} (incl. ৳10 platform fee & ৳50 Rajshahi delivery)
+Total Payable: ${formatTk(cost.grandTotal)} (incl. BDT 10 platform fee & BDT 50 Rajshahi delivery)
 
 Customer Details:
 Name: ${details.name}

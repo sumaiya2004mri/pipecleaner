@@ -122,3 +122,4 @@ if __name__ == "__main__":
         publish_daily(run_now=True)
     else:
         run_scheduler()
+

@@ -24,10 +24,10 @@
    - Touch swipe and keyboard arrow gesture navigation.
 
 3. **Artisan Flower Doors & Customizer Workbench**:
-   - **Varieties**: **Sunflower** (সূর্যমুখী), **Daisy** (ডেইজি), **Tulip** (টিউলিপ), and **Lavender Sprig** (ল্যাভেন্ডার).
+   - **Varieties**: **Sunflower** (Golden Radiance), **Daisy** (Pure Meadow Charm), **Tulip** (Sculpted Dutch Velvet), and **Lavender Sprig** (Calm Purple Clusters).
    - **Procedural Fuzzy Texture Engine**: Layered SVG paths with `feTurbulence` and `feDisplacementMap` to simulate authentic chenille fuzz and wire coils.
-   - **Controls**: Real-time slider for petal counts, segmented fullness buttons (*Big & Bold* 1-to-1, *Classic* 2-to-1, *Extra Full* 3-to-1), 10 curated color swatches, and foliage stepper.
-   - **Live Material & Price Estimator**: Instant count tally (৳2 per pipe cleaner, ৳10 platform fee, ৳50 Rajshahi delivery).
+   - **Controls**: Real-time slider for petal counts, Multi-Color Petal Selector Matrix (Solid, Alternating Two-Tone, Duo-Layer Depth), segmented fullness buttons (*Big & Bold* 1-to-1, *Classic* 2-to-1, *Extra Full* 3-to-1), 10 curated color swatches, and foliage stepper.
+   - **Live Material & Price Estimator**: Instant count tally (BDT 2 per pipe cleaner, BDT 10 platform fee, BDT 50 Rajshahi delivery).
 
 4. **Checkout Form Panel & Local Storage Engine**:
    - Form fields: Customer Name, Phone (with BD format validation `/^(\+?88)?01[3-9]\d{8}$/`), Delivery City, Area, and Full Street Address.

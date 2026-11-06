@@ -307,3 +307,4 @@ if (process.argv.includes('--run-now')) {
 } else {
   startNightlyScheduler();
 }
+

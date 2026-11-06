@@ -6,13 +6,15 @@
 export const CFG = {
   shop: 'Artistically.',
   brandFont: "'Avillia', 'Playfair Display', 'Bodoni Moda', serif",
-  tagline: 'Handcrafted Pipe Cleaner Blooms · রাজশাহী',
+  tagline: 'Handcrafted Pipe Cleaner Blooms · Rajshahi',
   instagram: 'artis_tically22',       // Target Instagram handle
   instagramUrl: 'https://www.instagram.com/artis_tically22/',
+  instagramAvatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=120&auto=format&fit=crop&q=80',
   email: 'sumaiyamrittika22@gmail.com', // Studio email routing
-  pricePerCleaner: 2,               // ৳ per pipe cleaner (4 tk per 2 cleaners)
-  platformFee: 10,                  // Fixed platform processing fee (৳)
-  deliveryFee: 50,                  // Flat delivery fee for Rajshahi (৳)
+  pricePerCleaner: 2,               // BDT per pipe cleaner (4 BDT per 2 cleaners)
+  platformFee: 10,                  // Fixed platform processing fee (BDT)
+  deliveryFee: 50,                  // Flat delivery fee for Rajshahi (BDT)
+  currency: 'BDT',
   defaultCity: 'rajshahi',
   deliveryCityName: 'Rajshahi'
 };
@@ -36,10 +38,12 @@ export const FL = {
   sunflower: {
     id: 'sunflower',
     name: 'Sunflower',
-    banglaName: 'সূর্যমুখী',
+    subtitle: 'Golden Radiance',
     bg: '#fef3c7',
     petals: 12,
     pc: 'yellow',
+    pc2: 'white',
+    petalMode: 'single',
     cc: 'brown',
     centre: true,
     minPetals: 6,
@@ -51,10 +55,12 @@ export const FL = {
   daisy: {
     id: 'daisy',
     name: 'Daisy',
-    banglaName: 'ডেইজি',
+    subtitle: 'Pure Meadow Charm',
     bg: '#e0f2fe',
     petals: 12,
     pc: 'white',
+    pc2: 'pink',
+    petalMode: 'single',
     cc: 'yellow',
     centre: true,
     minPetals: 6,
@@ -66,10 +72,12 @@ export const FL = {
   tulip: {
     id: 'tulip',
     name: 'Tulip',
-    banglaName: 'টিউলিপ',
+    subtitle: 'Sculpted Dutch Velvet',
     bg: '#fce7f3',
     petals: 8,
     pc: 'red',
+    pc2: 'pink',
+    petalMode: 'single',
     cc: 'red',
     centre: false,
     minPetals: 4,
@@ -82,10 +90,12 @@ export const FL = {
   lavender_sprig: {
     id: 'lavender_sprig',
     name: 'Lavender Sprig',
-    banglaName: 'ল্যাভেন্ডার',
+    subtitle: 'Calm Purple Clusters',
     bg: '#f3e8ff',
     petals: 16,
     pc: 'lavender',
+    pc2: 'pink',
+    petalMode: 'single',
     cc: 'green',
     centre: false,
     minPetals: 8,
@@ -96,6 +106,39 @@ export const FL = {
     description: 'Delicate stacked clusters of calm purple velvet loops.'
   }
 };
+
+export const PETAL_MODES = [
+  { id: 'single', name: 'Solid', desc: 'Uniform single shade' },
+  { id: 'alternate', name: 'Two-Tone Alternating', desc: 'Alternates primary & accent petals' },
+  { id: 'duo_layer', name: 'Duo-Layer Depth', desc: 'Outer primary petals with inner accent loops' }
+];
+
+export const LOFI_TRACKS = [
+  {
+    id: 'chrysanthemum',
+    title: 'Chrysanthemum Tea',
+    artist: 'Cozy Lo-Fi Crafts',
+    tempo: 76,
+    mood: 'Mellow Afternoon Chords',
+    key: 'F#maj7'
+  },
+  {
+    id: 'shoreline',
+    title: 'Shoreline by Filo',
+    artist: 'Gentle Ocean Waves',
+    tempo: 72,
+    mood: 'Warm Rhodes Vibrato',
+    key: 'Ebmaj7'
+  },
+  {
+    id: 'velvet_blooms',
+    title: 'Velvet Chenille Blooms',
+    artist: 'Studio Quiet Hour',
+    tempo: 80,
+    mood: 'Soft Tape Warble Chords',
+    key: 'Abmaj7'
+  }
+];
 
 export const FULL = [
   { n: 1, name: 'Big & Bold', desc: '1 petal per pipe cleaner', badge: 'Airy & expressive' },

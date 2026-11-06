@@ -41,6 +41,8 @@ class StateStore {
       petals: spec.petals,
       lpc: 2, // 2 petals per cleaner
       pc: spec.pc,
+      pc2: spec.pc2 || 'white',
+      petalMode: spec.petalMode || 'single', // 'single', 'alternate', 'duo_layer'
       cc: spec.cc,
       leaves: 2,
       lc: 'green',
@@ -135,9 +137,18 @@ class StateStore {
     const spec = FL[s.flower] || FL.sunflower;
     const parts = [];
 
-    // 1. Petals pipe cleaner count
+    // 1. Petals pipe cleaner count (supports Multi-Color Petal Matrix)
     const petalCleaners = Math.ceil(s.petals / s.lpc);
-    parts.push([s.pc, petalCleaners]);
+    if (!s.petalMode || s.petalMode === 'single' || s.pc === s.pc2) {
+      parts.push([s.pc, petalCleaners]);
+    } else {
+      const primaryCount = Math.ceil(petalCleaners / 2);
+      const secondaryCount = Math.floor(petalCleaners / 2);
+      parts.push([s.pc, primaryCount]);
+      if (secondaryCount > 0) {
+        parts.push([s.pc2, secondaryCount]);
+      }
+    }
 
     // 2. Center coil pipe cleaners (if flower has a center)
     if (spec.centre) {
@@ -185,7 +196,7 @@ class StateStore {
 
   /**
    * Generates a unique shareable URL hash representing the flower recipe
-   * Format: #d-{flower}-{petals}-{lpc}-{pc}-{cc}-{leaves}-{lc}-{sc}
+   * Format: #d-{flower}-{petals}-{lpc}-{pc}-{pc2}-{petalMode}-{cc}-{leaves}-{lc}-{sc}
    */
   getShareableHash() {
     const s = this.flower;
@@ -194,6 +205,8 @@ class StateStore {
       s.petals,
       s.lpc,
       s.pc,
+      s.pc2 || s.pc,
+      s.petalMode || 'single',
       s.cc,
       s.leaves,
       s.lc,
@@ -203,30 +216,56 @@ class StateStore {
 
   /**
    * Parses recipe from window.location.hash
+   * Supports both 10-part multi-color recipes and legacy 8-part hashes
    */
   loadFromHash(hash = window.location.hash) {
-    const match = /^#d-([a-z_]+)-(\d+)-([123])-([a-z]+)-([a-z]+)-(\d+)-([a-z]+)-([a-z]+)$/.exec(hash);
-    if (!match) return false;
-
-    const [, flowerKey, petals, lpc, pc, cc, leaves, lc, sc] = match;
-    if (!FL[flowerKey] || !COL[pc] || !COL[cc] || !COL[lc] || !COL[sc]) {
-      return false;
+    // 10-part hash: flower, petals, lpc, pc, pc2, petalMode, cc, leaves, lc, sc
+    const m10 = /^#d-([a-z_]+)-(\d+)-([123])-([a-z]+)-([a-z]+)-([a-z_]+)-([a-z]+)-(\d+)-([a-z]+)-([a-z]+)$/.exec(hash);
+    if (m10) {
+      const [, flowerKey, petals, lpc, pc, pc2, petalMode, cc, leaves, lc, sc] = m10;
+      if (FL[flowerKey] && COL[pc] && COL[pc2] && COL[cc] && COL[lc] && COL[sc]) {
+        const spec = FL[flowerKey];
+        this.flower = {
+          flower: flowerKey,
+          petals: Math.min(spec.maxPetals, Math.max(spec.minPetals || 4, parseInt(petals, 10))),
+          lpc: parseInt(lpc, 10),
+          pc,
+          pc2,
+          petalMode,
+          cc,
+          leaves: Math.min(8, Math.max(0, parseInt(leaves, 10))),
+          lc,
+          sc
+        };
+        this.notify('flower');
+        return true;
+      }
     }
 
-    const spec = FL[flowerKey];
-    this.flower = {
-      flower: flowerKey,
-      petals: Math.min(spec.maxPetals, Math.max(spec.minPetals || 4, parseInt(petals, 10))),
-      lpc: parseInt(lpc, 10),
-      pc,
-      cc,
-      leaves: Math.min(8, Math.max(0, parseInt(leaves, 10))),
-      lc,
-      sc
-    };
+    // Legacy 8-part hash
+    const m8 = /^#d-([a-z_]+)-(\d+)-([123])-([a-z]+)-([a-z]+)-(\d+)-([a-z]+)-([a-z]+)$/.exec(hash);
+    if (m8) {
+      const [, flowerKey, petals, lpc, pc, cc, leaves, lc, sc] = m8;
+      if (FL[flowerKey] && COL[pc] && COL[cc] && COL[lc] && COL[sc]) {
+        const spec = FL[flowerKey];
+        this.flower = {
+          flower: flowerKey,
+          petals: Math.min(spec.maxPetals, Math.max(spec.minPetals || 4, parseInt(petals, 10))),
+          lpc: parseInt(lpc, 10),
+          pc,
+          pc2: pc,
+          petalMode: 'single',
+          cc,
+          leaves: Math.min(8, Math.max(0, parseInt(leaves, 10))),
+          lc,
+          sc
+        };
+        this.notify('flower');
+        return true;
+      }
+    }
 
-    this.notify('flower');
-    return true;
+    return false;
   }
 
   /**

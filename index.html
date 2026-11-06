@@ -46,6 +46,17 @@
 </head>
 <body class="bg-bg text-ink font-body antialiased selection:bg-accent selection:text-ink">
 
+  <!-- Verified Instagram Studio Badge (Auto-Mock Integration) -->
+  <div class="fixed top-2.5 left-4 z-40 hidden sm:flex items-center gap-2 bg-panel/90 backdrop-blur border-2 border-line rounded-full px-2.5 py-1 shadow-[0_2px_0_var(--line)] hover:scale-105 transition-transform" id="igVerifiedBadge">
+    <a href="https://www.instagram.com/artis_tically22/" target="_blank" rel="noopener" class="flex items-center gap-2" title="Visit verified profile @artis_tically22">
+      <div class="relative w-6 h-6 rounded-full overflow-hidden ring-1.5 ring-pink-500">
+        <img id="igGlobalAvatar" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&auto=format&fit=crop&q=80" alt="@artis_tically22" class="w-full h-full object-cover">
+      </div>
+      <span class="text-xs font-bold text-ink">@artis_tically22</span>
+      <span class="bg-blue-500 text-white text-[9px] w-3.5 h-3.5 rounded-full inline-flex items-center justify-center font-black">✓</span>
+    </a>
+  </div>
+
   <!-- Sound Toggle Button -->
   <button class="sound" id="soundBtn" aria-label="Turn sound off" title="Sound Effects">🔔</button>
 
@@ -95,7 +106,7 @@
             <path d="M110 142V172M250 142V172" stroke="#5c3d1f" stroke-width="3"/>
             <rect x="50" y="166" width="260" height="76" rx="14" fill="#8a5a3c" stroke="#2a1f33" stroke-width="3"/>
             <text x="180" y="209" text-anchor="middle" font-family="'Avillia', 'Playfair Display', 'Bodoni Moda', Georgia, serif" font-weight="700" font-size="35" fill="#fff4d6" letter-spacing="-0.5">Artistically.</text>
-            <text x="180" y="231" text-anchor="middle" font-family="'Baloo Da 2', 'Baloo 2', sans-serif" font-weight="700" font-size="13" fill="#fbe05c">স্বাগতম · pipe cleaner flowers</text>
+            <text x="180" y="231" text-anchor="middle" font-family="'Nunito', sans-serif" font-weight="800" font-size="10.5" fill="#fbe05c" letter-spacing="1">WELCOME · HANDCRAFTED PIPE CLEANER BLOOMS</text>
 
             <!-- Striped Canvas Awning -->
             <g>
@@ -116,22 +127,62 @@
               <path d="M30 258H330" stroke="#2a1f33" stroke-width="3"/>
             </g>
 
-            <!-- Flower Showcase Window -->
+            <!-- Flower Showcase Window with Fully Defined Handcrafted Petals -->
             <rect x="44" y="330" width="116" height="170" rx="10" fill="#fff7e8" stroke="#2a1f33" stroke-width="3"/>
             <rect x="54" y="340" width="96" height="150" rx="6" fill="#d9f0ff"/>
             <rect x="54" y="438" width="96" height="8" fill="#a96f43"/>
-            <g stroke="#2f9e4f" stroke-width="4" stroke-linecap="round">
-              <path d="M75 438V400M102 438V388M129 438V404"/>
+            
+            <!-- Floral Stems & Leaves in Window -->
+            <g stroke="#2f9e4f" stroke-width="3.5" stroke-linecap="round">
+              <path d="M75 438V402M102 438V392M129 438V406"/>
+              <path d="M75 422Q68 418 64 421M102 416Q108 412 112 415M129 424Q123 420 119 423" stroke-width="2.5"/>
             </g>
-            <g>
-              <!-- Sunflower in window -->
-              <circle cx="75" cy="396" r="11" fill="none" stroke="#f7cf2a" stroke-width="5"/>
-              <circle cx="75" cy="396" r="4" fill="#6b3f22"/>
-              <!-- Daisy in window -->
-              <circle cx="102" cy="384" r="11" fill="none" stroke="#fbfbf8" stroke-width="5"/>
-              <circle cx="102" cy="384" r="4" fill="#f7cf2a"/>
-              <!-- Tulip in window -->
-              <circle cx="129" cy="400" r="10" fill="#d93a3a"/>
+            
+            <!-- Flower 1: Fully Sculpted Sunflower with 8 Radiating Looped Petals -->
+            <g id="windowSunflower" transform="translate(75, 396)">
+              <g stroke="#2a1f33" stroke-width="1.8">
+                <path d="M0 -5 C-3.5 -8 -3.5 -16 0 -18 C3.5 -16 3.5 -8 0 -5Z" fill="#f7cf2a"/>
+                <path d="M3.5 -3.5 C6 -6 11 -11 13 -13 C11 -8 6 -3.5 3.5 -3.5Z" fill="#fbe05c" transform="rotate(45)"/>
+                <path d="M5 0 C8 -3.5 16 -3.5 18 0 C16 3.5 8 3.5 5 0Z" fill="#f7cf2a"/>
+                <path d="M3.5 3.5 C6 6 11 11 13 13 C8 11 3.5 6 3.5 3.5Z" fill="#fbe05c" transform="rotate(45)"/>
+                <path d="M0 5 C-3.5 8 -3.5 16 0 18 C3.5 16 3.5 8 0 5Z" fill="#f7cf2a"/>
+                <path d="M-3.5 3.5 C-6 6 -11 11 -13 13 C-8 11 -3.5 6 -3.5 3.5Z" fill="#fbe05c" transform="rotate(45)"/>
+                <path d="M-5 0 C-8 -3.5 -16 -3.5 -18 0 C-16 3.5 -8 3.5 -5 0Z" fill="#f7cf2a"/>
+                <path d="M-3.5 -3.5 C-6 -6 -11 -11 -13 -13 C-11 -8 -6 -3.5 -3.5 -3.5Z" fill="#fbe05c" transform="rotate(45)"/>
+              </g>
+              <circle cx="0" cy="0" r="7" fill="#6b3f22" stroke="#2a1f33" stroke-width="2"/>
+              <circle cx="0" cy="0" r="4.5" fill="#4d2c16"/>
+              <circle cx="0" cy="0" r="2" fill="#f7cf2a"/>
+            </g>
+
+            <!-- Flower 2: Fully Sculpted Daisy with 10 Pure White Looped Petals -->
+            <g id="windowDaisy" transform="translate(102, 384)">
+              <g stroke="#2a1f33" stroke-width="1.6" fill="#fbfbf8">
+                <path d="M0 -4 C-2.8 -7 -2.8 -14 0 -16 C2.8 -14 2.8 -7 0 -4Z"/>
+                <path d="M0 -4 C-2.8 -7 -2.8 -14 0 -16 C2.8 -14 2.8 -7 0 -4Z" transform="rotate(36)"/>
+                <path d="M0 -4 C-2.8 -7 -2.8 -14 0 -16 C2.8 -14 2.8 -7 0 -4Z" transform="rotate(72)"/>
+                <path d="M0 -4 C-2.8 -7 -2.8 -14 0 -16 C2.8 -14 2.8 -7 0 -4Z" transform="rotate(108)"/>
+                <path d="M0 -4 C-2.8 -7 -2.8 -14 0 -16 C2.8 -14 2.8 -7 0 -4Z" transform="rotate(144)"/>
+                <path d="M0 -4 C-2.8 -7 -2.8 -14 0 -16 C2.8 -14 2.8 -7 0 -4Z" transform="rotate(180)"/>
+                <path d="M0 -4 C-2.8 -7 -2.8 -14 0 -16 C2.8 -14 2.8 -7 0 -4Z" transform="rotate(216)"/>
+                <path d="M0 -4 C-2.8 -7 -2.8 -14 0 -16 C2.8 -14 2.8 -7 0 -4Z" transform="rotate(252)"/>
+                <path d="M0 -4 C-2.8 -7 -2.8 -14 0 -16 C2.8 -14 2.8 -7 0 -4Z" transform="rotate(288)"/>
+                <path d="M0 -4 C-2.8 -7 -2.8 -14 0 -16 C2.8 -14 2.8 -7 0 -4Z" transform="rotate(324)"/>
+              </g>
+              <circle cx="0" cy="0" r="5.5" fill="#f7cf2a" stroke="#2a1f33" stroke-width="2"/>
+              <circle cx="0" cy="0" r="2.5" fill="#e5ab00"/>
+            </g>
+
+            <!-- Flower 3: Multi-Layered Crimson Dutch Tulip Cup -->
+            <g id="windowTulip" transform="translate(129, 400)">
+              <!-- Back petal layer -->
+              <path d="M0 -2 C-7 -8 -6 -18 0 -22 C6 -18 7 -8 0 -2Z" fill="#b82828" stroke="#2a1f33" stroke-width="1.8"/>
+              <!-- Left side cupped petal -->
+              <path d="M-1 -1 C-10 -7 -9 -17 -1 -20 C1 -13 0 -5 -1 -1Z" fill="#d93a3a" stroke="#2a1f33" stroke-width="1.8"/>
+              <!-- Right side cupped petal -->
+              <path d="M1 -1 C10 -7 9 -17 1 -20 C-1 -13 0 -5 1 -1Z" fill="#d93a3a" stroke="#2a1f33" stroke-width="1.8"/>
+              <!-- Front center petal loop -->
+              <path d="M0 0 C-4 -5 -4 -13 0 -16 C4 -13 4 -5 0 0Z" fill="#e84c4c" stroke="#2a1f33" stroke-width="1.8"/>
             </g>
 
             <!-- Arched Door Portal with Warm Light -->
@@ -157,11 +208,26 @@
             <path d="M236 316q9 -22 18 0z" fill="#f7cf2a" stroke="#2a1f33" stroke-width="2"/>
             <circle cx="245" cy="318" r="2.5" fill="#2a1f33"/>
 
-            <!-- Clay Flower Pot -->
-            <g>
+            <!-- Clay Flower Pot with Fully Sculpted Pipe Cleaner Petals -->
+            <g id="frontPotBloom">
               <path d="M312 530h26l-4 30h-18Z" fill="#c4724a" stroke="#2a1f33" stroke-width="2.5"/>
-              <path d="M325 530V500" stroke="#2f9e4f" stroke-width="4"/>
-              <circle cx="325" cy="494" r="9" fill="none" stroke="#f08fb0" stroke-width="5"/>
+              <path d="M325 530V498" stroke="#2f9e4f" stroke-width="4" stroke-linecap="round"/>
+              <path d="M325 514Q318 510 314 513M325 510Q332 506 336 509" stroke="#2f9e4f" stroke-width="2.5" stroke-linecap="round"/>
+              <!-- 8 Radiating Pink Petal Loops -->
+              <g transform="translate(325, 492)">
+                <g stroke="#2a1f33" stroke-width="1.6" fill="#f08fb0">
+                  <path d="M0 -3.5 C-2.5 -6 -2.5 -13 0 -15 C2.5 -13 2.5 -6 0 -3.5Z"/>
+                  <path d="M0 -3.5 C-2.5 -6 -2.5 -13 0 -15 C2.5 -13 2.5 -6 0 -3.5Z" transform="rotate(45)"/>
+                  <path d="M0 -3.5 C-2.5 -6 -2.5 -13 0 -15 C2.5 -13 2.5 -6 0 -3.5Z" transform="rotate(90)"/>
+                  <path d="M0 -3.5 C-2.5 -6 -2.5 -13 0 -15 C2.5 -13 2.5 -6 0 -3.5Z" transform="rotate(135)"/>
+                  <path d="M0 -3.5 C-2.5 -6 -2.5 -13 0 -15 C2.5 -13 2.5 -6 0 -3.5Z" transform="rotate(180)"/>
+                  <path d="M0 -3.5 C-2.5 -6 -2.5 -13 0 -15 C2.5 -13 2.5 -6 0 -3.5Z" transform="rotate(225)"/>
+                  <path d="M0 -3.5 C-2.5 -6 -2.5 -13 0 -15 C2.5 -13 2.5 -6 0 -3.5Z" transform="rotate(270)"/>
+                  <path d="M0 -3.5 C-2.5 -6 -2.5 -13 0 -15 C2.5 -13 2.5 -6 0 -3.5Z" transform="rotate(315)"/>
+                </g>
+                <circle cx="0" cy="0" r="5" fill="#f7cf2a" stroke="#2a1f33" stroke-width="1.8"/>
+                <circle cx="0" cy="0" r="2.2" fill="#e5ab00"/>
+              </g>
             </g>
 
             <!-- Animated Hint Prompt -->
@@ -206,20 +272,21 @@
               <g id="jars"></g>
             </g>
 
-            <!-- Friendly Shopkeeper / Salesperson Avatar (accent calibrated 5% lighter for intentional visual hierarchy) -->
+            <!-- Friendly Shopkeeper / Salesperson Avatar (skin tone reduced by 20% to #d4a387) -->
             <g transform="translate(10,316)" id="salespersonAvatar">
               <ellipse cx="78" cy="262" rx="70" ry="9" fill="#000000" opacity="0.14"/>
               <!-- Salesperson dress in 5% lighter accent #fbe05c -->
               <path d="M34 124Q34 78 78 78Q122 78 122 124L134 258H22Z" fill="#fbe05c" stroke="#2a1f33" stroke-width="3" stroke-linejoin="round"/>
               <!-- Soft rose-tinted apron overlay -->
               <path d="M52 100H104L112 258H44Z" fill="#f8b9cb" stroke="#2a1f33" stroke-width="3" stroke-linejoin="round"/>
-              <path d="M40 124Q24 160 36 190" fill="none" stroke="#b9764d" stroke-width="12" stroke-linecap="round"/>
-              <!-- Animated waving arm -->
+              <!-- Arm in 20% lighter porcelain skin tone #d4a387 -->
+              <path d="M40 124Q24 160 36 190" fill="none" stroke="#d4a387" stroke-width="12" stroke-linecap="round"/>
+              <!-- Animated waving arm with 20% lighter skin tone -->
               <g class="wave">
-                <path d="M112 118Q142 100 146 66" fill="none" stroke="#b9764d" stroke-width="12" stroke-linecap="round"/>
-                <circle cx="147" cy="60" r="9" fill="#b9764d" stroke="#2a1f33" stroke-width="2.5"/>
+                <path d="M112 118Q142 100 146 66" fill="none" stroke="#d4a387" stroke-width="12" stroke-linecap="round"/>
+                <circle cx="147" cy="60" r="9" fill="#d4a387" stroke="#2a1f33" stroke-width="2.5"/>
               </g>
-              <circle cx="78" cy="46" r="36" fill="#b9764d" stroke="#2a1f33" stroke-width="3"/>
+              <circle cx="78" cy="46" r="36" fill="#d4a387" stroke="#2a1f33" stroke-width="3"/>
               <circle cx="78" cy="2" r="15" fill="#241a1f" stroke="#2a1f33" stroke-width="3"/>
               <path d="M42 46Q40 6 78 6Q116 6 114 46Q100 24 78 24Q56 24 42 46Z" fill="#241a1f"/>
               <circle cx="64" cy="50" r="3.6" fill="#2a1f33"/>
@@ -235,11 +302,17 @@
             </g>
           </svg>
 
-          <!-- Welcome Speech Bubble with Salesperson Avatar Card Badge -->
+          <!-- Welcome Speech Bubble with Verified Instagram Profile Integration -->
           <div class="bubble salesperson-card" role="group" aria-label="Shopkeeper greeting">
-            <div class="flex items-center gap-2 mb-2">
-              <span class="salesperson-pill text-xs font-bold px-2 py-0.5 rounded-full uppercase tracking-wider">Artisan Florist</span>
-              <span class="text-xs font-artistic text-muted">@artis_tically22</span>
+            <div class="flex items-center justify-between gap-2 mb-2">
+              <a href="https://www.instagram.com/artis_tically22/" target="_blank" rel="noopener" class="inline-flex items-center gap-2 px-2.5 py-1 bg-white border border-line rounded-full shadow-[0_2px_0_var(--line)] hover:scale-105 transition-transform" title="Verified Instagram: @artis_tically22">
+                <div class="relative w-6 h-6 rounded-full overflow-hidden ring-1.5 ring-pink-500">
+                  <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&auto=format&fit=crop&q=80" alt="@artis_tically22" class="w-full h-full object-cover">
+                </div>
+                <span class="text-xs font-bold text-ink">@artis_tically22</span>
+                <span class="bg-blue-500 text-white text-[9px] w-3.5 h-3.5 rounded-full inline-flex items-center justify-center font-black">✓</span>
+              </a>
+              <span class="salesperson-pill text-[11px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wider">Artisan Florist</span>
             </div>
             <p>Welcome to <span class="font-artistic text-2xl font-bold">Artistically.</span>! Build your own custom flower, or pick a ready kit?</p>
             <div class="choices">
@@ -286,7 +359,7 @@
             <!-- Tabs: Petals, Center Coil, Leaves, Stem -->
             <div class="tabs" role="tablist" id="tabs"></div>
 
-            <!-- Pane 1: Petals -->
+            <!-- Pane 1: Petals with Multi-Color Petal Selector Matrix -->
             <div class="pane" id="pane-petals">
               <div class="flex items-center justify-between">
                 <span class="lbl">Petal Count</span>
@@ -299,8 +372,37 @@
               <span class="lbl mt-1">Petal Fullness & Style</span>
               <div class="seg" id="fullSeg"></div>
 
-              <span class="lbl mt-1">Petal Chenille Color</span>
+              <!-- Multi-Color Petal Selector Matrix -->
+              <span class="lbl mt-2 flex items-center justify-between">
+                <span>Petal Color Matrix</span>
+                <span class="text-[11px] font-bold text-accent-ink uppercase tracking-wider bg-accent/30 px-2 py-0.5 rounded-full border border-line">Multi-Tone Engine</span>
+              </span>
+              <div class="seg" id="paletteModeSeg">
+                <button type="button" data-mode="single" class="mode-btn" aria-pressed="true">
+                  <b>Solid</b>
+                  <span>Uniform Color</span>
+                </button>
+                <button type="button" data-mode="alternate" class="mode-btn" aria-pressed="false">
+                  <b>Two-Tone</b>
+                  <span>Alternating Loops</span>
+                </button>
+                <button type="button" data-mode="duo_layer" class="mode-btn" aria-pressed="false">
+                  <b>Duo-Layer</b>
+                  <span>Depth Palette</span>
+                </button>
+              </div>
+
+              <span class="lbl mt-1" id="lbl-pc">Primary Petal Color</span>
               <div class="swatches" data-part="pc"></div>
+
+              <!-- Secondary Petal Color Swatches (Shown in Alternate & Duo-Layer modes) -->
+              <div id="box-pc2" hidden class="p-2.5 bg-soft/60 border-2 border-line rounded-2xl transition-all">
+                <div class="flex items-center justify-between mb-1.5">
+                  <span class="lbl text-ink font-extrabold text-xs">Accent / Secondary Petal Color</span>
+                  <span class="text-[10px] font-bold px-1.5 py-0.5 bg-white rounded border border-line">Alternating Layer</span>
+                </div>
+                <div class="swatches" data-part="pc2"></div>
+              </div>
             </div>
 
             <!-- Pane 2: Center Coil -->
@@ -376,7 +478,7 @@
             <div class="field">
               <label for="f-city">Delivery City</label>
               <select id="f-city" name="city" autocomplete="address-level2">
-                <option value="rajshahi" selected>Rajshahi (৳50 Flat Courier)</option>
+                <option value="rajshahi" selected>Rajshahi (BDT 50 Flat Courier)</option>
                 <option value="other">Outside Rajshahi (Currently unavailable)</option>
               </select>
             </div>
@@ -427,11 +529,26 @@
         <div class="kits mt-6" id="kitList"></div>
 
         <p class="small-note text-center mt-6">
-          Standard platform handling fee ৳10 and local Rajshahi delivery ৳50 are added on the final bill.
+          Standard platform handling fee BDT 10 and local Rajshahi delivery BDT 50 are added on the final bill.
         </p>
       </div>
     </section>
   </main>
+
+  <!-- Cozy Lo-Fi Background Music Atmosphere Component -->
+  <aside class="fixed bottom-3 left-4 z-40 bg-panel/95 backdrop-blur-sm border-2.5 border-line rounded-full px-3.5 py-1.5 shadow-[0_4px_0_var(--line)] flex items-center gap-2.5 transition-all" id="lofiPlayer" aria-label="Lo-Fi Background Music Atmosphere">
+    <button class="w-8 h-8 rounded-full bg-accent border-2 border-line flex items-center justify-center text-xs shadow-[0_2px_0_var(--line)] active:translate-y-0.5 hover:scale-105 transition-transform" id="lofiPlayBtn" title="Play / Pause cozy lo-fi music">
+      <span id="lofiIcon">▶</span>
+    </button>
+    <div class="text-left hidden sm:block">
+      <div class="text-[9.5px] uppercase font-extrabold tracking-wider text-muted flex items-center gap-1.5">
+        <span class="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" id="lofiLiveDot"></span>
+        Cozy Lo-Fi Music
+      </div>
+      <div class="text-xs font-bold font-display text-ink truncate max-w-[155px]" id="lofiTrackTitle">Chrysanthemum Tea</div>
+    </div>
+    <button class="text-xs font-extrabold text-muted hover:text-ink px-1 active:scale-95" id="lofiNextBtn" title="Next track">⏭</button>
+  </aside>
 
   <!-- OVERLAYS & MODALS -->
 
